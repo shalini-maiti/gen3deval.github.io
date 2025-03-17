@@ -38,7 +38,7 @@
   </div>
   <div class="navbar-menu">
     <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
-      <a class="navbar-item" href="https://keunhong.com">
+      <a class="navbar-item" href="">
       <span class="icon">
           <i class="fas fa-home"></i>
       </span>
@@ -152,7 +152,7 @@
   <div class="container is-max-desktop">
     <div class="hero-body">
       <video id="teaser" autoplay muted loop playsinline height="100%">
-        <source src=""
+        <source src="./static/videos/supp_video_compress.mp4"
                 type="video/mp4">
       </video>
       <h2 class="subtitle has-text-centered">
@@ -169,7 +169,7 @@
       <div id="results-carousel" class="carousel results-carousel">
         <div class="item item-steve">
           <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
-            <source src=""
+            <source src="./static/videos/supp_video_compress.mp4"
                     type="video/mp4">
           </video>
         </div>
@@ -208,7 +208,7 @@
       <div class="column is-four-fifths">
         <h2 class="title is-3">Video</h2>
         <div class="publication-video">
-          <iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0"
+          <iframe src="./static/videos/supp_video_compress.mp4"
                   frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
         </div>
       </div>
@@ -223,39 +223,53 @@
 
     <div class="columns is-centered">
 
-      <!-- Visual Effects. -->
+      <!-- Appearance. -->
       <div class="column">
         <div class="content">
-          <h2 class="title is-3">Contribution 1</h2>
+          <h2 class="title is-3">On Appearance</h2>
           <p>
             lorem ipsum
           </p>
           <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
-            <source src=""
+            <source src="./static/videos/supp_video_compress.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+      <!--/ Appearance. -->
+
+      <!-- Visual Effects. -->
+      <div class="column">
+        <div class="content">
+          <h2 class="title is-3">On Text Faithfulness</h2>
+          <p>
+            lorem ipsum
+          </p>
+          <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/supp_video_compress.mp4"
                     type="video/mp4">
           </video>
         </div>
       </div>
       <!--/ Visual Effects. -->
 
-      <!-- Matting. -->
+      <!-- Surface Quality. -->
       <div class="column">
-        <h2 class="title is-3">Contribution 2</h2>
+        <h2 class="title is-3">On Surface Quality</h2>
         <div class="columns is-centered">
           <div class="column content">
             <p>
               lorem ipsum
             </p>
             <video id="matting-video" controls playsinline height="100%">
-              <source src="./static/videos/matting.mp4"
+              <source src=""
                       type="video/mp4">
             </video>
           </div>
-
         </div>
       </div>
     </div>
-    <!--/ Matting. -->
+    <!--/ Surface Quality. -->
 
     <!-- Animation. -->
     <div class="columns is-centered">
@@ -269,26 +283,19 @@
             lorem ipsum
           </p>
         </div>
-        <div class="columns is-vcentered interpolation-panel">
+        <div class="columns is-vcentered">
           <div class="column is-3 has-text-centered">
-            <img src="./static/images/interpolate_start.jpg"
-                 class="interpolation-image"
+            <img src="./static/images/teaser.pdf"
+                 class="image"
                  alt="Interpolate start reference image."/>
-            <p>Start Frame</p>
+            <p>Framework</p>
           </div>
-          <div class="column interpolation-video-column">
-            <div id="interpolation-image-wrapper">
-              Loading...
-            </div>
-            <input class="slider is-fullwidth is-large is-info"
-                   id="interpolation-slider"
-                   step="1" min="0" max="100" value="0" type="range">
-          </div>
+          
           <div class="column is-3 has-text-centered">
-            <img src="./static/images/interpolate_end.jpg"
-                 class="interpolation-image"
-                 alt="Interpolation end reference image."/>
-            <p class="is-bold">End Frame</p>
+            <img src="./static/images/model_details.pdf"
+                 class="image"
+                 alt=""/>
+            <p class="is-bold">Teaser</p>
           </div>
         </div>
         <br/>
@@ -308,7 +315,7 @@
                  preload
                  playsinline
                  width="75%">
-            <source src="./static/videos/replay.mp4"
+            <source src="./static/videos/supp_video_compress.mp4"
                     type="video/mp4">
           </video>
         </div>
@@ -332,15 +339,6 @@
 
 <footer class="footer">
   <div class="container">
-    <div class="content has-text-centered">
-      <a class="icon-link"
-         href="">
-        <i class="fas fa-file-pdf"></i>
-      </a>
-      <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
-        <i class="fab fa-github"></i>
-      </a>
-    </div>
     <div class="columns is-centered">
       <div class="column is-8">
         <div class="content">
@@ -348,7 +346,6 @@
             This webpage template is adapted from <a
             href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>, under a <a rel="license"
             href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0 License.</a>
-            
           </p>
         </div>
       </div>
