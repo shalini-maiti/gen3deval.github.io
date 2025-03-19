@@ -25,6 +25,25 @@
   <script src="./static/js/bulma-carousel.min.js"></script>
   <script src="./static/js/bulma-slider.min.js"></script>
   <script src="./static/js/index.js"></script>
+  <script>
+    const titles = [
+        ["Amazing Nature", "Breathtaking Views", "Wildlife Wonders"],
+        ["City Life", "Urban Adventures", "Metropolitan Marvels"],
+        ["Deep Space", "Galactic Wonders", "Cosmic Mysteries"]
+    ];
+  
+    function changeTitle(sectionId, titleArray) {
+        let index = 0;
+        setInterval(() => {
+            document.getElementById(sectionId).innerText = titleArray[index];
+            index = (index + 1) % titleArray.length;
+        }, 3000);
+    }
+  
+    changeTitle("title1", titles[0]);
+    changeTitle("title2", titles[1]);
+    changeTitle("title3", titles[2]);
+  </script>
 </head>
 <body>
 
@@ -275,7 +294,33 @@
       </div>
     </div>
     <!--/ Animation. -->
-
+    <div class="container">
+      <div class="section" id="section1">
+          <div class="title" id="title1">Amazing Nature</div>
+          <div class="videos">
+              <video src="./static/videos/supp_video_compress.mp4" controls></video>
+              <video src="./static/videos/supp_video_compress.mp4" controls></video>
+              <video src="./static/videos/supp_video_compress.mp4" controls></video>
+          </div>
+      </div>
+      <div class="section" id="section2">
+          <div class="title" id="title2">City Life</div>
+          <div class="videos">
+              <video src="./static/videos/supp_video_compress.mp4" controls></video>
+              <video src="./static/videos/supp_video_compress.mp4" controls></video>
+              <video src="./static/videos/supp_video_compress.mp4" controls></video>
+          </div>
+      </div>
+      <div class="section" id="section3">
+          <div class="title" id="title3">Deep Space</div>
+          <div class="videos">
+              <video src="./static/videos/supp_video_compress.mp4" controls></video>
+              <video src="./static/videos/supp_video_compress.mp4" controls></video>
+              <video src="./static/videos/supp_video_compress.mp4" controls></video>
+          </div>
+      </div>
+    </div>
+    
   </div>
 </section>
 
