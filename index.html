@@ -26,23 +26,33 @@
   <script src="./static/js/bulma-slider.min.js"></script>
   <script src="./static/js/index.js"></script>
   <script>
-    const titles = [
-        ["Amazing Nature", "Breathtaking Views", "Wildlife Wonders"],
-        ["City Life", "Urban Adventures", "Metropolitan Marvels"],
-        ["Deep Space", "Galactic Wonders", "Cosmic Mysteries"]
-    ];
-  
-    function changeTitle(sectionId, titleArray) {
-        let index = 0;
-        setInterval(() => {
-            document.getElementById(sectionId).innerText = titleArray[index];
-            index = (index + 1) % titleArray.length;
-        }, 3000);
-    }
-  
-    changeTitle("title1", titles[0]);
-    changeTitle("title2", titles[1]);
-    changeTitle("title3", titles[2]);
+    function changeVideos() {
+            const videoSets = {
+                set1: [
+                      "static/videos/set1/set1_app.mp4", 
+                      "static/videos/set1/set1_tf.mp4", 
+                      "static/videos/set1/set1_sq.mp4"
+                    ],
+                set2: [
+                      "static/videos/set2/set2_app.mp4", 
+                      "static/videos/set2/set2_tf.mp4", 
+                      "static/videos/set2/set2_sq.mp4"
+                    ],
+                set3: [
+                      "static/videos/set3/set3_app.mp4", 
+                      "static/videos/set3/set3_tf.mp4", 
+                      "static/videos/set3/set3_sq.mp4"
+                    ]
+            };
+            
+            let selectedSet = document.getElementById("videoSelector").value;
+            let videos = document.querySelectorAll("video");
+            
+            videos.forEach((video, index) => {
+                video.src = videoSets[selectedSet][index];
+                video.load();
+            });
+        }
   </script>
 </head>
 <body>
@@ -134,11 +144,11 @@
   <div class="container is-max-desktop">
     <div class="hero-body">
       <video id="teaser" autoplay muted loop playsinline height="100%">
-        <source src="./static/videos/supp_video_compress.mp4"
+        <source src="./static/videos/teaservideo_2.mp4"
                 type="video/mp4">
       </video>
       <h2 class="subtitle has-text-centered">
-        <span class="dnerf">Teaser Video</span> one line description
+        <span class="dnerf">Gen3DEval:</span> A new ranking metric for 3D asset generation using vision-based Large Language Models
       </h2>
     </div>
   </div>
@@ -169,169 +179,146 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Rapid advancements in text-to-3D generation necessitate robust and 
-            scalable evaluation metrics that align closely with human 
-            judgment—a need unmet by current metrics such as PSNR and CLIP, 
-            which require ground-truth data or focus only on prompt fidelity. 
-            To address this, we introduce Gen3DEval, a novel evaluation framework 
-            that leverages vision large language models (vLLMs) specifically 
-            fine-tuned for 3D object quality assessment. Gen3DEval evaluates 
-            text fidelity, appearance, and surface quality—by analyzing 3D 
-            surface normals—without requiring ground-truth comparisons, 
-            bridging the gap between automated metrics and user preferences.
+            Rapid advancements in text-to-3D generation require robust and 
+            scalable evaluation metrics that align closely with human judgment, 
+            a need unmet by current metrics such as PSNR and CLIP, which 
+            require ground-truth data or focus only on prompt fidelity. 
+            To address this, we introduce Gen3DEval, a novel evaluation 
+            framework that leverages vision large language models (vLLMs) 
+            specifically fine-tuned for 3D object quality assessment. 
+            Gen3DEval evaluates text fidelity, appearance, and surface 
+            quality by analyzing 3D surface normals, without requiring 
+            ground-truth comparisons, bridging the gap between automated 
+            metrics and user preferences. Compared to state-of-the-art 
+            task-agnostic models, Gen3DEval demonstrates superior 
+            performance in user-aligned evaluations, placing it as 
+            a comprehensive and accessible benchmark for future 
+            research on text-to-3D generation. 
           </p>
         </div>
       </div>
     </div>
     <!--/ Abstract. -->
 
-    <!-- Paper video. -->
+    <!-- Paper overview. -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">Video</h2>
-        <div class="publication-video">
-          <iframe src="./static/videos/supp_video_compress.mp4"
-                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        <h2 class="title is-3">Overview of the Method</h2>
+        <div class="image-container" style="display: inline-block; margin: 10px;">
+          <img src="./static/images/model_details.png" alt="Image 1" style="width: 100%; height: auto; border-radius: 10px;">
         </div>
       </div>
     </div>
-    <!--/ Paper video. -->
+    <!--/ Paper overview. -->
+  </div>
+
+<!--/ Dataset. -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Training Dataset</h2>
+        <section id="images" style="text-align: center; margin: 20px 0;">
+          <div class="image-container" style="display: inline-block; margin: 10px;">
+            <h3 class="title is-4">Pre-Training Dataset</h2>
+              <img src="./static/images/pre_training_example.png" alt="Image 1" style="width: 100%; height: auto; border-radius: 1px;">
+          </div>
+          <div class="image-container" style="display: inline-block; margin: 10px;">
+            <h3 class="title is-4">Supervised FineTuning Dataset</h2>
+              <img src="./static/images/sft_examples.png" alt="Image 2" style="width: 100%; height: auto; border-radius: 1px;">
+          </div>
+      </div>
+    </div>
   </div>
 </section>
-
 
 <section class="section">
   <div class="container is-max-desktop">
-
-    <div class="columns is-centered">
-
-      <!-- Appearance. -->
-      <div class="column">
-        <div class="content">
-          <h2 class="title is-3">On Appearance</h2>
-          <p>
-            lorem ipsum
-          </p>
-          <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/supp_video_compress.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-      </div>
-      <!--/ Appearance. -->
-
-      <!-- Visual Effects. -->
-      <div class="column">
-        <div class="content">
-          <h2 class="title is-3">On Text Faithfulness</h2>
-          <p>
-            lorem ipsum
-          </p>
-          <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/supp_video_compress.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-      </div>
-      <!--/ Visual Effects. -->
-
-      <!-- Surface Quality. -->
-      <div class="column">
-        <h2 class="title is-3">On Surface Quality</h2>
-        <div class="columns is-centered">
-          <div class="column content">
-            <p>
-              lorem ipsum
-            </p>
-            <video id="matting-video" controls playsinline height="100%">
-              <source src="./static/videos/supp_video_compress.mp4"
-                      type="video/mp4">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Asset Comparison Examples</h2>
+          <label for="videoSelector">Choose a text prompt:</label>
+          <select id="videoSelector" onchange="changeVideos()">
+            <option value="set1">A panda with coarse black and white fur, holding a bamboo shoot with visible teeth marks.</option>
+            <option value="set2">A desk organizer with compartments for pens and papers, showing slight scratches on the surface.</option>
+            <option value="set3">A human wizard with a long beard, holding a glowing staff, casting a spell.</option>
+          </select>
+          
+          <div class="video-container">
+            <video id="video1" width="30%" autoplay muted loop>
+              <!-- Appearance -->
+                <source src="static/videos/set1/set1_app.mp4" type="video/mp4">
             </video>
-          </div>
-        </div>
+            <video id="video2" width="30%" autoplay muted loop>
+              <!-- Text Fidelity -->
+                <source src="static/videos/set1/set1_tf.mp4" type="video/mp4">
+            </video>
+            <video id="video3" width="30%" autoplay muted loop>
+              <!-- Surface Quality -->
+                <source src="static/videos/set1/set1_sq.mp4" type="video/mp4">
+            </video>
       </div>
     </div>
-    <!--/ Surface Quality. -->
-
-    <!-- Animation. -->
-    <div class="columns is-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">Section</h2>
-
-        <!-- Interpolating. -->
-        <h3 class="title is-4">Section</h3>
-        <section id="images" style="text-align: center; margin: 20px 0;">
-          <div class="image-container" style="display: inline-block; margin: 10px;">
-              <img src="./static/images/teaser.png" alt="Image 1" style="width: 300px; height: auto; border-radius: 10px;">
-          </div>
-          <div class="image-container" style="display: inline-block; margin: 10px;">
-              <img src="./static/images/model_details.png" alt="Image 2" style="width: 300px; height: auto; border-radius: 10px;">
-          </div>
-      </section>
-        <br/>
-        <!--/ Interpolating. -->
-
-        <!-- Re-rendering. -->
-        <h3 class="title is-4">Section</h3>
-        <div class="content has-text-justified">
-          <p>
-            lorem ipsum
-          </p>
-        </div>
-        <div class="content has-text-centered">
-          <video id="replay-video"
-                 controls
-                 muted
-                 preload
-                 playsinline
-                 width="75%">
-            <source src="./static/videos/supp_video_compress.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <!--/ Re-rendering. -->
-
-      </div>
-    </div>
-    <!--/ Animation. -->
-    <div class="container">
-      <div class="section" id="section1">
-          <div class="title" id="title1">Amazing Nature</div>
-          <div class="car-videos">
-              <video src="./static/videos/supp_video_compress.mp4" controls></video>
-              <video src="./static/videos/supp_video_compress.mp4" controls></video>
-              <video src="./static/videos/supp_video_compress.mp4" controls></video>
-          </div>
-      </div>
-      <div class="section" id="section2">
-          <div class="title" id="title2">City Life</div>
-          <div class="car-videos">
-              <video src="./static/videos/supp_video_compress.mp4" controls></video>
-              <video src="./static/videos/supp_video_compress.mp4" controls></video>
-              <video src="./static/videos/supp_video_compress.mp4" controls></video>
-          </div>
-      </div>
-      <div class="section" id="section3">
-          <div class="title" id="title3">Deep Space</div>
-          <div class="car-videos">
-              <video class="car-video" src="./static/videos/supp_video_compress.mp4" controls></video>
-              <video class="car-video" src="./static/videos/supp_video_compress.mp4" controls></video>
-              <video class="car-video" src="./static/videos/supp_video_compress.mp4" controls></video>
-          </div>
-      </div>
-    </div>
-    
   </div>
+</div>
 </section>
 
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Leaderboard Rankings</h2>
+        <table>
+          <thead>
+              <tr>
+                  <th>Method</th>
+                  <th>Appearance</th>
+                  <th>Text Fidelity</th>
+                  <th>Overall</th>
+              </tr>
+          </thead>
+          <tbody>
+              <script>
+                const items = [
+                    ["Trellis", "1", "1", "1"],
+                    ["AssetGen", "2", "2", "2"],
+                    ["Flex3d", "4", "3", "3"],
+                    ["LatentNerf", "3", "6", "4"],
+                    ["Magic123", "5", "4", "5"],
+                    ["Vfusion3d", "6", "5", "6"],
+                    ["Magic3d", "7", "7", "7"],
+                    ["DreamFusion", "8", "8", "8"],
+                    // ["Fantasia3D", "Item 9-2", "Item 9-3", "Item 9-4"],
+                    // ["Item 10-1", "Item 10-2", "Item 10-3", "Item 10-4"]
+                  ];
+                  for (let i = 0; i < items.length; i++) {
+                    document.write('<tr>');
+                    for (let j = 0; j < items[i].length; j++) {
+                      document.write(`<td>${items[i][j]}</td>`);
+                    }
+                    document.write('</tr>');
+                  }
+              </script>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
 
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
-    <pre><code>""</code></pre>
+    <pre><code>
+      @article{maiti2025gen3DEval,
+      title={Gen3DEval: Using vLLMs for automatic evaluation of generated 3D objects},
+      author={Shalini Maiti and Lourdes Agapito and Filippos Kokkinos},
+      journal={arXiv preprint arXiv:xxxx.xxxxx},
+      year={2025}}
+    </code></pre>
   </div>
 </section>
-
 
 <footer class="footer">
   <div class="container">

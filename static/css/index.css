@@ -154,10 +154,33 @@ body {
   justify-content: space-around;
   margin-top: 10px;
 }
+.car-video {
+  width: 30%;
+  border-radius: 10px;
+}
 
 #interpolation-image-wrapper {
   width: 100%;
 }
 #interpolation-image-wrapper img {
   border-radius: 5px;
+}
+
+.video-container {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+th, td {
+  border: 1px solid black;
+  padding: 8px;
+  text-align: center;
+}
+th {
+  background-color: #f2f2f2;
 }
