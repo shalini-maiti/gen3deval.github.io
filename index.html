@@ -285,6 +285,86 @@
   </div>
 </section>
 
+<!--/ Benchmark. -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Benchmark: Gen3DEval-Bench</h2>
+        <!-- <section id="images" style="text-align: center; margin: 20px 0;"> -->
+          <p>We create a diverse set of 80 prompts, Gen3DEval-Bench,
+            which considers the diversity of objects, textures, and levels
+            of composition. We determine the size of this benchmark with 
+            the consideration that text-to-3D generation is a
+            time- and computation-intensive process, aiming to make
+            the benchmark easily accessible. It is split between 40 animate 
+            (humanoids, animals) objects and 40 inanimate objects, 
+            as well as into 43 single object and 37 composite 
+            object prompts, i.e., combining multiple objects. The average
+            number of words per prompt is 12.863.</p>
+          <div class="image-container" style="display: inline-block; margin: 10px;">
+            <!-- <h3 class="title is-4">Comparison with other benchmarks</h2> -->
+              <table>
+                <thead>
+                    <tr>
+                        <th>Benchmark</th>
+                          <th>Num. Prompts</th>
+                          <th>Avg. word length</th>
+                          <th>Object Type (Animate)</th>
+                          <th>Object Type (Inanimate)</th>
+                          <th>Composition (Single Obj.)</th>
+                          <th>Composition (Multi-object)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>T3Bench</td>
+                    <td>300</td>
+                    <td>7.98</td>
+                    <td>36</td>
+                    <td>264</td>
+                    <td>100</td>
+                    <td>200</td>
+                  </tr>
+                  <tr>
+                    <td>ChatGPTEval3D</td>
+                    <td>110</td>
+                    <td>11.49</td>
+                    <td>18</td>
+                    <td>92</td>
+                    <td>65</td>
+                    <td>45</td>
+                  </tr>
+                  <tr>
+                    <td>DreamFusion</td>
+                    <td>404</td>
+                    <td>6.98</td>
+                    <td>211</td>
+                    <td>192</td>
+                    <td>154</td>
+                    <td>250</td>
+                  </tr>
+                  <tr>
+                    <td>Gen3DEval-Bench </td>
+                    <td>80</td>
+                    <td>12.863</td>
+                    <td>40</td>
+                    <td>40</td>
+                    <td>43</td>
+                    <td>37</td>
+                  </tr>
+                </tbody>
+              </table>
+              <p><span class="dnerf">Comparing Gen3DEval-Bench</span> with existing 3D generation prompt benchmarks.</p>
+              <!-- <img src="./static/images/pre_training_example.png" alt="Image 1" style="width: 100%; height: auto; border-radius: 1px;"> -->
+          </div>
+          
+      </div>
+    </div>
+  </div>
+</section>
+
+
 <section class="section">
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
@@ -391,11 +471,12 @@
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
     <pre><code>
-      @article{maiti2025gen3DEval,
-      title={Gen3DEval: Using vLLMs for automatic evaluation of generated 3D objects},
-      author={Shalini Maiti and Lourdes Agapito and Filippos Kokkinos},
-      journal={arXiv preprint arXiv:xxxx.xxxxx},
-      year={2025}}
+      @inproceedings{maiti2025gen3DEval,
+        author={Shalini Maiti and Lourdes Agapito and Filippos Kokkinos},
+        title={Gen3DEval: Using vLLMs for automatic evaluation of generated 3D objects}, 
+        booktitle = {The IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},
+        year = {2025}
+      }
     </code></pre>
   </div>
 </section>
