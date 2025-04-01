@@ -26,33 +26,85 @@
   <script src="./static/js/bulma-slider.min.js"></script>
   <script src="./static/js/index.js"></script>
   <script>
+    let currentVideoIndex = 0;
+    let currentVideoSet = "set1";
+    
     function changeVideos() {
-            const videoSets = {
-                set1: [
-                      "static/videos/set1/set1_app.mp4", 
-                      "static/videos/set1/set1_tf.mp4", 
-                      "static/videos/set1/set1_sq.mp4"
-                    ],
-                set2: [
-                      "static/videos/set2/set2_app.mp4", 
-                      "static/videos/set2/set2_tf.mp4", 
-                      "static/videos/set2/set2_sq.mp4"
-                    ],
-                set3: [
-                      "static/videos/set3/set3_app.mp4", 
-                      "static/videos/set3/set3_tf.mp4", 
-                      "static/videos/set3/set3_sq.mp4"
-                    ]
-            };
-            
-            let selectedSet = document.getElementById("videoSelector").value;
-            let videos = document.querySelectorAll("video");
-            
-            videos.forEach((video, index) => {
-                video.src = videoSets[selectedSet][index];
-                video.load();
-            });
-        }
+      const videoSets = {
+        set1: [
+          "static/videos/set1/set1_app.mp4", 
+          "static/videos/set1/set1_tf.mp4", 
+          "static/videos/set1/set1_sq.mp4"
+        ],
+        set2: [
+          "static/videos/set2/set2_app.mp4", 
+          "static/videos/set2/set2_tf.mp4", 
+          "static/videos/set2/set2_sq.mp4"
+        ],
+        set3: [
+          "static/videos/set3/set3_app.mp4", 
+          "static/videos/set3/set3_tf.mp4", 
+          "static/videos/set3/set3_sq.mp4"
+        ]
+      };
+      
+      currentVideoSet = document.getElementById("videoSelector").value;
+      currentVideoIndex = 0;
+      
+      showCurrentVideo();
+    }
+    
+    function showCurrentVideo() {
+      const videoSets = {
+        set1: [
+          "static/videos/set1/set1_app.mp4", 
+          "static/videos/set1/set1_tf.mp4", 
+          "static/videos/set1/set1_sq.mp4"
+        ],
+        set2: [
+          "static/videos/set2/set2_app.mp4", 
+          "static/videos/set2/set2_tf.mp4", 
+          "static/videos/set2/set2_sq.mp4"
+        ],
+        set3: [
+          "static/videos/set3/set3_app.mp4", 
+          "static/videos/set3/set3_tf.mp4", 
+          "static/videos/set3/set3_sq.mp4"
+        ]
+      };
+      let currentVideo = document.getElementById("currentVideo");
+      currentVideo.srcObject = null;
+      currentVideo.src = videoSets[currentVideoSet][currentVideoIndex];
+      currentVideo.load();
+      // let currentVideo = document.getElementById("currentVideo");
+      // currentVideo.src = videoSets[currentVideoSet][currentVideoIndex];
+      // currentVideo.load();
+      let titleText;
+      switch (currentVideoIndex) {
+        case 0:
+          titleText = "Appearance";
+          break;
+        case 1:
+          titleText = "Text Fidelity";
+          break;
+        case 2:
+          titleText = "Surface Quality";
+          break;
+      }
+      
+      let titleElement = document.querySelector(".carousel-item.is-active p.title");
+      titleElement.textContent = titleText;
+    }
+    
+    function showNextVideo() {
+      currentVideoIndex = (currentVideoIndex + 1) % 3;
+      showCurrentVideo();
+    }
+    
+    function showPrevVideo() {
+      currentVideoIndex = (currentVideoIndex - 1 + 3) % 3;
+      showCurrentVideo();
+    }
   </script>
 </head>
 <body>
@@ -144,11 +196,12 @@
   <div class="container is-max-desktop">
     <div class="hero-body">
       <video id="teaser" autoplay muted loop playsinline height="100%">
-        <source src="./static/videos/teaservideo_2.mp4"
+        <source src="./static/videos/teaser_video3.mp4"
                 type="video/mp4">
       </video>
       <h2 class="subtitle has-text-centered">
-        <span class="dnerf">Gen3DEval:</span> A new ranking metric for 3D asset generation using vision-based Large Language Models
+        <span class="dnerf">Gen3DEval:</span> A new ranking metric for 3D asset 
+        generation using vision-based Large Language Models
       </h2>
     </div>
   </div>
@@ -243,21 +296,44 @@
             <option value="set2">A desk organizer with compartments for pens and papers, showing slight scratches on the surface.</option>
             <option value="set3">A human wizard with a long beard, holding a glowing staff, casting a spell.</option>
           </select>
+          <div class="carousel" data-carousel-id="videoCarousel">
+            <div class="arrow left-arrow" onclick="showPrevVideo()">
+              <i class="fas fa-chevron-left"></i>
+            </div>
+            <div class="carousel-item is-active">
+              <p class="title is-4">Appearance</p>
+              <video id="currentVideo" width="100%" autoplay muted loop>
+                <!-- Current Video -->
+                  <source src="static/videos/set1/set1_app.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="arrow right-arrow" onclick="showNextVideo()">
+              <i class="fas fa-chevron-right"></i>
+            </div>
+          </div>
           
-          <div class="video-container">
-            <video id="video1" width="30%" autoplay muted loop>
-              <!-- Appearance -->
-                <source src="static/videos/set1/set1_app.mp4" type="video/mp4">
-            </video>
-            <video id="video2" width="30%" autoplay muted loop>
-              <!-- Text Fidelity -->
-                <source src="static/videos/set1/set1_tf.mp4" type="video/mp4">
-            </video>
-            <video id="video3" width="30%" autoplay muted loop>
-              <!-- Surface Quality -->
-                <source src="static/videos/set1/set1_sq.mp4" type="video/mp4">
-            </video>
-      </div>
+          <!-- <div class="carousel" data-carousel-id="videoCarousel"> -->
+            <!-- <div class="carousel-item is-active"> -->
+              <!-- <video id="video1" width="100%" autoplay muted loop> -->
+                <!-- Appearance -->
+                  <!-- <source src="static/videos/set1/set1_app.mp4" type="video/mp4"> -->
+              <!-- </video> -->
+            <!-- </div> -->
+            <!-- <div class="carousel-item"> -->
+              <!-- <video id="video2" width="100%" autoplay muted loop> -->
+                <!-- Text Fidelity -->
+                  <!-- <source src="static/videos/set1/set1_tf.mp4" type="video/mp4"> -->
+              <!-- </video> -->
+            <!-- </div> -->
+            <!-- <div class="carousel-item"> -->
+              <!-- <video id="video3" width="100%" autoplay muted loop> -->
+                <!-- Surface Quality -->
+                  <!-- <source src="static/videos/set1/set1_sq.mp4" type="video/mp4"> -->
+              <!-- </video> -->
+            <!-- </div> -->
+          <!-- </div> -->
+          <!-- <button class="button is-primary" data-carousel-next="videoCarousel">Next</button>
+          <button class="button is-primary" data-carousel-prev="videoCarousel">Previous</button> -->
     </div>
   </div>
 </div>
@@ -280,12 +356,12 @@
           <tbody>
               <script>
                 const items = [
-                    ["Trellis", "1", "1", "1"],
+                    ["Trellis*", "1", "1", "1"],
                     ["AssetGen", "2", "2", "2"],
-                    ["Flex3d", "4", "3", "3"],
+                    ["Flex3d*", "4", "3", "3"],
                     ["LatentNerf", "3", "6", "4"],
                     ["Magic123", "5", "4", "5"],
-                    ["Vfusion3d", "6", "5", "6"],
+                    ["Vfusion3d*", "6", "5", "6"],
                     ["Magic3d", "7", "7", "7"],
                     ["DreamFusion", "8", "8", "8"],
                     // ["Fantasia3D", "Item 9-2", "Item 9-3", "Item 9-4"],
@@ -301,6 +377,10 @@
               </script>
           </tbody>
         </table>
+        <span class="dnerf">Gen3DEval</span> applied to 3D generation methods on Gen3DEval-Bench. 
+        Methods are ranked from Best(1) to Worst(8) on text fidelity and appearance score. 
+        The appearance and text fidelity scores are used for the overall score. 
+        Image-to-3D methods are denoted with *.
       </div>
     </div>
   </div>
