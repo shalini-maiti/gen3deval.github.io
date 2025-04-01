@@ -137,7 +137,7 @@
             <div class="publication-links">
               <!-- PDF Link. -->
               <span class="link-block">
-                <a href=""
+                <a href="./static/05691_main.pdf"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fas fa-file-pdf"></i>
@@ -146,12 +146,21 @@
                 </a>
               </span>
               <span class="link-block">
+                <a href="./static/05691_supp.pdf"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Supplementary</span>
+                </a>
+              </span>
+              <span class="link-block">
                 <a href=""
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="ai ai-arxiv"></i>
                   </span>
-                  <span>arXiv</span>
+                  <span>arXiv (coming soon!)</span>
                 </a>
               </span>
               <!-- Code Link. -->
@@ -200,15 +209,18 @@
                 type="video/mp4">
       </video>
       <h2 class="subtitle has-text-centered">
-        <span class="dnerf">Gen3DEval:</span> A new ranking metric for 3D asset 
-        generation using vision-based Large Language Models
+        <span class="dnerf">Gen3DEval:</span>  A holistic ranking metric to assess the 
+        quality of generated 3D objects on appearance, surface quality and text 
+        fidelity using a vision large language model (vLLM) which is trained to 
+        choose the better out of two objects on the three evaluation dimensions 
+        (appearance, text fidelity or surface quality). 
       </h2>
     </div>
   </div>
 </section>
 
 
-<section class="hero is-light is-small">
+<!-- <section class="hero is-light is-small">
   <div class="hero-body">
     <div class="container">
       <div id="results-carousel" class="carousel results-carousel">
@@ -221,7 +233,7 @@
       </div>
     </div>
   </div>
-</section>
+</section> -->
 
 
 <section class="section">
@@ -259,6 +271,13 @@
         <h2 class="title is-3">Overview of the Method</h2>
         <div class="image-container" style="display: inline-block; margin: 10px;">
           <img src="./static/images/model_details.png" alt="Image 1" style="width: 100%; height: auto; border-radius: 10px;">
+          <p>In stage 1, we train a vLLM to choose which object is better in terms of appearance, 
+            surface quality or text fidelity. This is further divided into 2 parts. 
+            In pre-training, we train the vision-to-language projector using image 
+            summary VQA. In the supervised fine-tuning (SFT) stage, we use comparison 
+            data to train for instruction following and preference evaluation. In stage 2, 
+            we compute a ranking metric for the set of methods by applying the trained vLLM 
+            from stage 1 pairwise on Gen3DEval-Bench prompts.</p>
         </div>
       </div>
     </div>
@@ -271,14 +290,18 @@
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
         <h2 class="title is-3">Training Dataset</h2>
+        <p>We use single and multi-view RGB and surface normals renderings of a 3D object generated from a prompt.
+          We take these objects and perturb them to simulate common appearance, surface and text-related artefacts in generative 3D methods.</p>
         <section id="images" style="text-align: center; margin: 20px 0;">
           <div class="image-container" style="display: inline-block; margin: 10px;">
             <h3 class="title is-4">Pre-Training Dataset</h2>
               <img src="./static/images/pre_training_example.png" alt="Image 1" style="width: 100%; height: auto; border-radius: 1px;">
+              
           </div>
           <div class="image-container" style="display: inline-block; margin: 10px;">
             <h3 class="title is-4">Supervised FineTuning Dataset</h2>
               <img src="./static/images/sft_examples.png" alt="Image 2" style="width: 100%; height: auto; border-radius: 1px;">
+              
           </div>
       </div>
     </div>
