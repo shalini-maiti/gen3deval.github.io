@@ -32,19 +32,19 @@
     function changeVideos() {
       const videoSets = {
         set1: [
-          "static/videos/set1/set1_app.mp4", 
-          "static/videos/set1/set1_tf.mp4", 
-          "static/videos/set1/set1_sq.mp4"
+          "./static/videos/set1/set1_app.mp4", 
+          "./static/videos/set1/set1_tf.mp4", 
+          "./static/videos/set1/set1_sq.mp4"
         ],
         set2: [
-          "static/videos/set2/set2_app.mp4", 
-          "static/videos/set2/set2_tf.mp4", 
-          "static/videos/set2/set2_sq.mp4"
+          "./static/videos/set2/set2_app.mp4", 
+          "./static/videos/set2/set2_tf.mp4", 
+          "./static/videos/set2/set2_sq.mp4"
         ],
         set3: [
-          "static/videos/set3/set3_app.mp4", 
-          "static/videos/set3/set3_tf.mp4", 
-          "static/videos/set3/set3_sq.mp4"
+          "./static/videos/set3/set3_app.mp4", 
+          "./static/videos/set3/set3_tf.mp4", 
+          "./static/videos/set3/set3_sq.mp4"
         ]
       };
       
@@ -57,19 +57,19 @@
     function showCurrentVideo() {
       const videoSets = {
         set1: [
-          "static/videos/set1/set1_app.mp4", 
-          "static/videos/set1/set1_tf.mp4", 
-          "static/videos/set1/set1_sq.mp4"
+          "./static/videos/set1/set1_app.mp4", 
+          "./static/videos/set1/set1_tf.mp4", 
+          "./static/videos/set1/set1_sq.mp4"
         ],
         set2: [
-          "static/videos/set2/set2_app.mp4", 
-          "static/videos/set2/set2_tf.mp4", 
-          "static/videos/set2/set2_sq.mp4"
+          "./static/videos/set2/set2_app.mp4", 
+          "./static/videos/set2/set2_tf.mp4", 
+          "./static/videos/set2/set2_sq.mp4"
         ],
         set3: [
-          "static/videos/set3/set3_app.mp4", 
-          "static/videos/set3/set3_tf.mp4", 
-          "static/videos/set3/set3_sq.mp4"
+          "./static/videos/set3/set3_app.mp4", 
+          "./static/videos/set3/set3_tf.mp4", 
+          "./static/videos/set3/set3_sq.mp4"
         ]
       };
       let currentVideo = document.getElementById("currentVideo");
@@ -220,7 +220,7 @@
 </section>
 
 
-<!-- <section class="hero is-light is-small">
+<section class="hero is-light is-small">
   <div class="hero-body">
     <div class="container">
       <div id="results-carousel" class="carousel results-carousel">
@@ -233,7 +233,7 @@
       </div>
     </div>
   </div>
-</section> -->
+</section>
 
 
 <section class="section">
@@ -407,36 +407,14 @@
               <p class="title is-4">Appearance</p>
               <video id="currentVideo" width="100%" autoplay muted loop>
                 <!-- Current Video -->
-                  <source src="static/videos/set1/set1_app.mp4" type="video/mp4">
+                  <source src="./static/videos/set1/set1_app.mp4" type="video/mp4">
               </video>
             </div>
             <div class="arrow right-arrow" onclick="showNextVideo()">
               <i class="fas fa-chevron-right"></i>
             </div>
           </div>
-          
-          <!-- <div class="carousel" data-carousel-id="videoCarousel"> -->
-            <!-- <div class="carousel-item is-active"> -->
-              <!-- <video id="video1" width="100%" autoplay muted loop> -->
-                <!-- Appearance -->
-                  <!-- <source src="static/videos/set1/set1_app.mp4" type="video/mp4"> -->
-              <!-- </video> -->
-            <!-- </div> -->
-            <!-- <div class="carousel-item"> -->
-              <!-- <video id="video2" width="100%" autoplay muted loop> -->
-                <!-- Text Fidelity -->
-                  <!-- <source src="static/videos/set1/set1_tf.mp4" type="video/mp4"> -->
-              <!-- </video> -->
-            <!-- </div> -->
-            <!-- <div class="carousel-item"> -->
-              <!-- <video id="video3" width="100%" autoplay muted loop> -->
-                <!-- Surface Quality -->
-                  <!-- <source src="static/videos/set1/set1_sq.mp4" type="video/mp4"> -->
-              <!-- </video> -->
-            <!-- </div> -->
-          <!-- </div> -->
-          <!-- <button class="button is-primary" data-carousel-next="videoCarousel">Next</button>
-          <button class="button is-primary" data-carousel-prev="videoCarousel">Previous</button> -->
+      </div>
     </div>
   </div>
 </div>
