@@ -105,6 +105,22 @@
       currentVideoIndex = (currentVideoIndex - 1 + 3) % 3;
       showCurrentVideo();
     }
+
+    function sortTable(columnIndex) {
+        let table = document.getElementById("sortableTable");
+        let tbody = table.getElementsByTagName("tbody")[0];
+        let rows = Array.from(tbody.getElementsByTagName("tr"));
+
+        rows.sort((rowA, rowB) => {
+            let cellA = rowA.getElementsByTagName("td")[columnIndex].innerText;
+            let cellB = rowB.getElementsByTagName("td")[columnIndex].innerText;
+            
+            return isNaN(cellA) || isNaN(cellB) ? cellA.localeCompare(cellB) : cellA - cellB;
+        });
+
+        tbody.innerHTML = "";
+        rows.forEach(row => tbody.appendChild(row));
+    }
   </script>
 </head>
 <body>
@@ -425,36 +441,31 @@
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
         <h2 class="title is-3">Leaderboard Rankings</h2>
-        <table>
+        <table id="sortableTable" border="1">
           <thead>
               <tr>
-                  <th>Method</th>
-                  <th>Appearance</th>
-                  <th>Text Fidelity</th>
-                  <th>Overall</th>
+                  <th>Method <button onclick="sortTable(0)">▲</button></th>
+                  <th>Appearance <button onclick="sortTable(1)">▲</button></th>
+                  <th>Text Fidelity <button onclick="sortTable(2)">▲</button></th>
+                  <th>Overall <button onclick="sortTable(3)">▲</button></th>
               </tr>
           </thead>
           <tbody>
               <script>
-                const items = [
-                    ["Trellis*", "1", "1", "1"],
-                    ["AssetGen", "2", "2", "2"],
-                    ["Flex3d*", "4", "3", "3"],
-                    ["LatentNerf", "3", "6", "4"],
-                    ["Magic123", "5", "4", "5"],
-                    ["Vfusion3d*", "6", "5", "6"],
-                    ["Magic3d", "7", "7", "7"],
-                    ["DreamFusion", "8", "8", "8"],
-                    // ["Fantasia3D", "Item 9-2", "Item 9-3", "Item 9-4"],
-                    // ["Item 10-1", "Item 10-2", "Item 10-3", "Item 10-4"]
+                  const items = [
+                      ["Trellis*", "1", "1", "1"],
+                      ["AssetGen", "2", "2", "2"],
+                      ["Flex3d*", "4", "3", "3"],
+                      ["LatentNerf", "3", "6", "4"],
+                      ["Magic123", "5", "4", "5"],
+                      ["Vfusion3d*", "6", "5", "6"],
+                      ["Magic3d", "7", "7", "7"],
+                      ["DreamFusion", "8", "8", "8"]
                   ];
-                  for (let i = 0; i < items.length; i++) {
-                    document.write('<tr>');
-                    for (let j = 0; j < items[i].length; j++) {
-                      document.write(`<td>${items[i][j]}</td>`);
-                    }
-                    document.write('</tr>');
-                  }
+                  
+                  document.write(items.map(row => 
+                      `<tr>${row.map(cell => `<td>${cell}</td>`).join('')}</tr>`
+                  ).join(''));
               </script>
           </tbody>
         </table>
