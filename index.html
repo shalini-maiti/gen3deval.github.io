@@ -45,6 +45,41 @@
           "./static/videos/set3/set3_app.mp4", 
           "./static/videos/set3/set3_tf.mp4", 
           "./static/videos/set3/set3_sq.mp4"
+        ],
+        set4: [
+          "./static/videos/set4/set4_app.mp4", 
+          "./static/videos/set4/set4_tf.mp4", 
+          "./static/videos/set4/set4_sq.mp4"
+        ],
+        set5: [
+          "./static/videos/set5/set5_app.mp4", 
+          "./static/videos/set5/set5_tf.mp4", 
+          "./static/videos/set5/set5_sq.mp4"
+        ],
+        set6: [
+          "./static/videos/set6/set6_app.mp4", 
+          "./static/videos/set6/set6_tf.mp4", 
+          "./static/videos/set6/set6_sq.mp4"
+        ],
+        set7: [
+          "./static/videos/set7/set7_app.mp4", 
+          "./static/videos/set7/set7_tf.mp4", 
+          "./static/videos/set7/set7_sq.mp4"
+        ],
+        set8: [
+          "./static/videos/set8/set8_app.mp4", 
+          "./static/videos/set8/set8_tf.mp4", 
+          "./static/videos/set8/set8_sq.mp4"
+        ],
+        set9: [
+          "./static/videos/set9/set9_app.mp4", 
+          "./static/videos/set9/set9_tf.mp4", 
+          "./static/videos/set9/set9_sq.mp4"
+        ],
+        set10: [
+          "./static/videos/set10/set10_app.mp4", 
+          "./static/videos/set10/set10_tf.mp4", 
+          "./static/videos/set10/set10_sq.mp4"
         ]
       };
       
@@ -54,6 +89,22 @@
       showCurrentVideo();
     }
     
+    function sortTable(columnIndex) {
+        let table = document.getElementById("sortableTable");
+        let tbody = table.getElementsByTagName("tbody")[0];
+        let rows = Array.from(tbody.getElementsByTagName("tr"));
+
+        rows.sort((rowA, rowB) => {
+            let cellA = rowA.getElementsByTagName("td")[columnIndex].innerText;
+            let cellB = rowB.getElementsByTagName("td")[columnIndex].innerText;
+            
+            return isNaN(cellA) || isNaN(cellB) ? cellA.localeCompare(cellB) : cellA - cellB;
+        });
+
+        tbody.innerHTML = "";
+        rows.forEach(row => tbody.appendChild(row));
+    }
+
     function showCurrentVideo() {
       const videoSets = {
         set1: [
@@ -70,6 +121,41 @@
           "./static/videos/set3/set3_app.mp4", 
           "./static/videos/set3/set3_tf.mp4", 
           "./static/videos/set3/set3_sq.mp4"
+        ],
+        set4: [
+          "./static/videos/set4/set4_app.mp4", 
+          "./static/videos/set4/set4_tf.mp4", 
+          "./static/videos/set4/set4_sq.mp4"
+        ],
+        set5: [
+          "./static/videos/set5/set5_app.mp4", 
+          "./static/videos/set5/set5_tf.mp4", 
+          "./static/videos/set5/set5_sq.mp4"
+        ],
+        set6: [
+          "./static/videos/set6/set6_app.mp4", 
+          "./static/videos/set6/set6_tf.mp4", 
+          "./static/videos/set6/set6_sq.mp4"
+        ],
+        set7: [
+          "./static/videos/set7/set7_app.mp4", 
+          "./static/videos/set7/set7_tf.mp4", 
+          "./static/videos/set7/set7_sq.mp4"
+        ],
+        set8: [
+          "./static/videos/set8/set8_app.mp4", 
+          "./static/videos/set8/set8_tf.mp4", 
+          "./static/videos/set8/set8_sq.mp4"
+        ],
+        set9: [
+          "./static/videos/set9/set9_app.mp4", 
+          "./static/videos/set9/set9_tf.mp4", 
+          "./static/videos/set9/set9_sq.mp4"
+        ],
+        set10: [
+          "./static/videos/set10/set10_app.mp4", 
+          "./static/videos/set10/set10_tf.mp4", 
+          "./static/videos/set10/set10_sq.mp4"
         ]
       };
       let currentVideo = document.getElementById("currentVideo");
@@ -104,22 +190,6 @@
     function showPrevVideo() {
       currentVideoIndex = (currentVideoIndex - 1 + 3) % 3;
       showCurrentVideo();
-    }
-
-    function sortTable(columnIndex) {
-        let table = document.getElementById("sortableTable");
-        let tbody = table.getElementsByTagName("tbody")[0];
-        let rows = Array.from(tbody.getElementsByTagName("tr"));
-
-        rows.sort((rowA, rowB) => {
-            let cellA = rowA.getElementsByTagName("td")[columnIndex].innerText;
-            let cellB = rowB.getElementsByTagName("td")[columnIndex].innerText;
-            
-            return isNaN(cellA) || isNaN(cellB) ? cellA.localeCompare(cellB) : cellA - cellB;
-        });
-
-        tbody.innerHTML = "";
-        rows.forEach(row => tbody.appendChild(row));
     }
   </script>
 </head>
@@ -414,6 +484,13 @@
             <option value="set1">A panda with coarse black and white fur, holding a bamboo shoot with visible teeth marks.</option>
             <option value="set2">A desk organizer with compartments for pens and papers, showing slight scratches on the surface.</option>
             <option value="set3">A human wizard with a long beard, holding a glowing staff, casting a spell.</option>
+            <option value="set4">A smartphone with a glass back, light scratches visible on the surface near the corners.</option>
+            <option value="set5">A human samurai holding a katana.</option>
+            <option value="set6">A phoenix with fiery feathers.</option>
+            <option value="set7">A human wizard with a long beard holding a glowing staff.</option>
+            <option value="set8">A human superhero in a cape, flying over a city skyline at sunset.</option>
+            <option value="set9">A lion with a flowing mane, sitting on a rock, looking out over the savannah.</option>
+            <option value="set10">A human Viking with a horned helmet and axe.</option>
           </select>
           <div class="carousel" data-carousel-id="videoCarousel">
             <div class="arrow left-arrow" onclick="showPrevVideo()">
